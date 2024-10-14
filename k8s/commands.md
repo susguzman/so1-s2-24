@@ -7,6 +7,7 @@ k get pods -o wide
 k get pods --show-labels
 k describe pods my-front-658789c759-9fqw9
 k get deploy my-front -o yaml
+k logs my-back-5cf56768dc-csrq7
 
 # Deployments
 kubectl get deployments
