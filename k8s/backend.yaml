@@ -17,11 +17,11 @@ spec:
         image: susguzman/so1-s223-back:0.1.1
         env:
         - name: ORACLE_USER
-          value: oracle
+          value: APPUSER
         - name: ORACLE_PASS
-          value: your_pass
+          value: passwordapp
         - name: ORACLE_CONNSTR
-          value: localhost:1521/xepdb1
+          value: svc-database:1521/xepdb1
         resources:
           limits:
             memory: "128Mi"
