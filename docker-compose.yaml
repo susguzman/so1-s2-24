@@ -1,0 +1,32 @@
+services:
+  myfrontend:
+    build:
+      context: ./frontend
+      dockerfile: nginx.dockerfile
+      args:
+        - REACT_APP_BACKEND_BASE_URL=http://back.poguz.xyz
+    image: susguzman/so1-s223-front:0.1.3-nginx-alpine
+    ports:
+      - 8888:80
+  mybackend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: susguzman/so1-s223-back:0.1.1
+    ports:
+      - 3800:3800
+    env_file:
+      - ./.env
+    restart: always
+  database:
+    image: gvenzl/oracle-xe:21.3.0
+    ports:
+      - 1521:1521
+    env_file:
+      - ./.env
+    volumes:
+      - ./database:/container-entrypoint-initdb.d
+      - oracle-data:/opt/oracle/oradata
+
+volumes:
+  oracle-data:
