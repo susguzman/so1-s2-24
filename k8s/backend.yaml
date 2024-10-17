@@ -19,7 +19,10 @@ spec:
         - name: ORACLE_USER
           value: APPUSER
         - name: ORACLE_PASS
-          value: passwordapp
+          valueFrom:
+            secretKeyRef:
+              key: app-user-pass
+              name: db-secrets
         - name: ORACLE_CONNSTR
           value: svc-database:1521/xepdb1
         resources:

@@ -23,12 +23,18 @@ spec:
       - name: my-database
         image: gvenzl/oracle-xe:21.3.0
         env:
-        - name: ORACLE_PASSWORD
-          value: passwordso1
         - name: APP_USER
           value: APPUSER
+        - name: ORACLE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: oracle-pass
+              name: db-secrets
         - name: APP_USER_PASSWORD
-          value: passwordapp
+          valueFrom:
+            secretKeyRef:
+              key: app-user-pass
+              name: db-secrets
         resources:
           limits:
             memory: "2048Mi"
@@ -125,4 +131,12 @@ spec:
   resources:
     requests:
       storage: 10Gi
-      
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: db-secrets
+type: Opaque
+data:
+  oracle-pass: cGFzc3dvcmRzbzE=
+  app-user-pass: cGFzc3dvcmRhcHA=
