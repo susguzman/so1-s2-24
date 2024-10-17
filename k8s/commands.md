@@ -20,3 +20,16 @@ k get endpoints (k get ep)
 kubectl apply -f <file>
 
 kubectl port-forward services/svc-front 8888:8888 -n default
+
+kubectl get configmap
+kubectl get cm
+
+
+# Storage
+kubectl get persistentvolumeclaim
+kubectl get pvc
+
+kubectl get persistentvolume
+kubectl get storageclass
+
+kubectl get secrets
