@@ -1,6 +1,4 @@
 
 # TODOs
 
-Ingress
-
-Helm
+GKE

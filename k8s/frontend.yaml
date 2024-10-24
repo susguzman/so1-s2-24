@@ -26,7 +26,7 @@ kind: Service
 metadata:
   name: svc-front
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: my-front
   ports:
@@ -51,3 +51,20 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: my-front
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-front-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: svc-front
+            port:
+              number: 8888
