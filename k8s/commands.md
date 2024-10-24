@@ -33,3 +33,8 @@ kubectl get persistentvolume
 kubectl get storageclass
 
 kubectl get secrets
+
+# HPA
+
+kubectl get hpa
+kubectl autoscale deployment my-front --cpu-percent=50 --min=2 --max=5
