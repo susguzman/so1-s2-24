@@ -57,7 +57,7 @@ kind: Ingress
 metadata:
   name: my-front-ingress
 spec:
-  ingressClassName: nginx
+  # ingressClassName: nginx
   rules:
   - http:
       paths:
